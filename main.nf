@@ -386,7 +386,7 @@ if ( download_from('ftp') ) {
 
     """
     PREFIX="\$(echo "$accession" | head -c 6)"
-    FTP_PATH="ftp://ftp.sra.ebi.ac.uk/vol1/fastq/\${PREFIX}"
+    FTP_PATH="http://ftp.sra.ebi.ac.uk/vol1/fastq/\${PREFIX}"
     SAMPLE=$accession
 
     if [[ "\${#SAMPLE}" == "9" ]]; then
