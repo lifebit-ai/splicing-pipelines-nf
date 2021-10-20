@@ -391,10 +391,19 @@ if ( download_from('ftp') ) {
 
     if [[ "\${#SAMPLE}" == "9" ]]; then
       FTP_PATH="\${FTP_PATH}/$accession/$accession"
-    else    
-      SUFFIX="\${SAMPLE: -1}"    
+    elif [[ "\${#SAMPLE}" == "10" ]]; then
+      SUFFIX="\${SAMPLE: -1}" 
       FTP_PATH="\${FTP_PATH}/00\${SUFFIX}/$accession/$accession"
+    elif [[ "\${#SAMPLE}" == "11" ]]; then
+      SUFFIX="\${SAMPLE: -2}" 
+      FTP_PATH="\${FTP_PATH}/0\${SUFFIX}/$accession/$accession"      
+    else    
+      SUFFIX="\${SAMPLE: -3}"    
+      FTP_PATH="\${FTP_PATH}/\${SUFFIX}/$accession/$accession"
     fi
+
+    echo \$SAMPLE
+    echo \$FTP_PATH
 
     if [ "$isSingle" = true ] ; then
       wget "\${FTP_PATH}.fastq.gz"
