@@ -406,7 +406,12 @@ if ( download_from('ftp') ) {
     echo \$FTP_PATH
 
     if [ "$isSingle" = true ] ; then
-      wget "\${FTP_PATH}.fastq.gz"
+      {
+        wget "\${FTP_PATH}.fastq.gz"
+      } || {
+        wget "\${FTP_PATH}_1.fastq.gz" 
+        mv ${accession}_1.fastq.gz ${accession}.fastq.gz
+      }
     else
       wget "\${FTP_PATH}_1.fastq.gz"
       wget "\${FTP_PATH}_2.fastq.gz"
