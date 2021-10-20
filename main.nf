@@ -348,7 +348,7 @@ if ( download_from('gtex') || download_from('sra') ) {
     file(sra_config) from ch_sra_config_file
     
     output:
-    set val(accession), file(output_filename), val(params.singleEnd) into raw_reads_fastqc, raw_reads_trimmomatic 
+    set val(accession), file(output_filename), val(params.singleEnd) into raw_reads_fastqc, raw_reads_trimmomatic
 	  file("command-logs-*") optional true
 
     script:
